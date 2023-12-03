@@ -27,7 +27,7 @@ jobs:
           export JAR=$(find . -regex '.*liquidbounce-b[0-9|.]*\.jar')
           cp $JAR zip/SkidBounce.jar
       - name: Upload artifact
-        uses: actions/download-artifact@v3.0.2
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: SkidBounce
           path: zip/SkidBounce.jar      
