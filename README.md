@@ -1,4 +1,4 @@
-# LiquidBounce
+# SkidBounce
 A free mixin-based injection hacked-client for Minecraft using Minecraft Forge, supporting version 1.8.9
 
 Website: https://liquidbounce.net \

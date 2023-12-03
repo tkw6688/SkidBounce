@@ -21,6 +21,7 @@ import net.ccbluex.liquidbounce.features.module.modules.player.*
 import net.ccbluex.liquidbounce.features.module.modules.render.*
 import net.ccbluex.liquidbounce.features.module.modules.world.*
 import net.ccbluex.liquidbounce.features.module.modules.world.Timer
+import net.ccbluex.liquidbounce.features.module.modules.skid.*
 import net.ccbluex.liquidbounce.utils.ClientUtils.LOGGER
 import net.ccbluex.liquidbounce.utils.inventory.InventoryManager
 import java.util.*
@@ -51,6 +52,8 @@ object ModuleManager : Listenable {
 
         // Register modules which have already been instanced (Kotlin objects)
         registerModules(
+            IqChanger,
+            NoAchievements,
             AbortBreaking,
             Aimbot,
             AirJump,

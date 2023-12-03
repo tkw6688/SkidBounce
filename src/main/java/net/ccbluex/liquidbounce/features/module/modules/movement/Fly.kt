@@ -12,6 +12,7 @@ import net.ccbluex.liquidbounce.features.module.modules.movement.flymodes.aac.*
 import net.ccbluex.liquidbounce.features.module.modules.movement.flymodes.hypixel.BoostHypixel
 import net.ccbluex.liquidbounce.features.module.modules.movement.flymodes.hypixel.FreeHypixel
 import net.ccbluex.liquidbounce.features.module.modules.movement.flymodes.hypixel.Hypixel
+import net.ccbluex.liquidbounce.features.module.modules.movement.flymodes.ncp.LatestNCP
 import net.ccbluex.liquidbounce.features.module.modules.movement.flymodes.ncp.NCP
 import net.ccbluex.liquidbounce.features.module.modules.movement.flymodes.ncp.OldNCP
 import net.ccbluex.liquidbounce.features.module.modules.movement.flymodes.other.*
@@ -41,7 +42,7 @@ object Fly : Module("Fly", ModuleCategory.MOVEMENT, Keyboard.KEY_F) {
         Vanilla, SmoothVanilla,
 
         // NCP
-        NCP, OldNCP,
+        NCP, OldNCP, LatestNCP,
 
         // AAC
         AAC1910, AAC305, AAC316, AAC3312, AAC3312Glide, AAC3313,
@@ -77,6 +78,11 @@ object Fly : Module("Fly", ModuleCategory.MOVEMENT, Keyboard.KEY_F) {
     private val vanillaKickBypass by BoolValue("VanillaKickBypass", false, subjective = true)
         { mode in arrayOf("Vanilla", "SmoothVanilla") }
     val ncpMotion by FloatValue("NCPMotion", 0f, 0f..1f) { mode == "NCP" }
+
+    //LNCP
+    val lncp_teleportValue_cs = BoolValue("Teleport", false)
+    val lncp_timerValue_cs = BoolValue("Timer", true)
+    val lncp_addValue_cs = FloatValue("AddSpeed", 0.0f, 0.0f..1.5f)
 
     // AAC
     val aacSpeed by FloatValue("AAC1.9.10-Speed", 0.3f, 0f..1f) { mode == "AAC1.9.10" }

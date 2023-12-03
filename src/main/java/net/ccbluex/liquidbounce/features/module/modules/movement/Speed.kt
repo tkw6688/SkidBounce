@@ -90,7 +90,9 @@ object Speed : Module("Speed", ModuleCategory.MOVEMENT) {
         Legit,
         CustomSpeed,
         MineBlazeHop,
-        MineBlazeTimer
+        MineBlazeTimer,
+        VulcanHop,
+        BlocksMC
     )
 
     private val modes = speedModes.map { it.modeName }.toTypedArray()

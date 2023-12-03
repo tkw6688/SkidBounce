@@ -22,8 +22,19 @@ object MovementUtils : MinecraftInstance(), Listenable {
         get() = mc.thePlayer?.run { sqrt(motionX * motionX + motionZ * motionZ).toFloat() } ?: .0f
         set(value) { strafe(value) }
 
+    fun getSpeed_fdp(): Float {
+        return sqrt(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ).toFloat()
+    }
+
     val isMoving
         get() = mc.thePlayer?.movementInput?.run { moveForward != 0f || moveStrafe != 0f } ?: false
+
+    fun isMoving_fdp(): Boolean {
+        return mc.thePlayer != null && (mc.thePlayer.movementInput.moveForward != 0f || mc.thePlayer.movementInput.moveStrafe != 0f)
+    }
+
+    val movingYaw: Float
+        get() = (direction * 180f / Math.PI).toFloat()
 
     val hasMotion
         get() = mc.thePlayer?.run { motionX != .0 || motionY != .0 || motionZ != .0 } ?: false

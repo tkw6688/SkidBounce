@@ -1,0 +1,48 @@
+package net.ccbluex.liquidbounce.features.module.modules.movement.speedmodes.other
+
+import net.ccbluex.liquidbounce.features.module.modules.movement.speedmodes.SpeedMode
+import net.ccbluex.liquidbounce.utils.MovementUtils
+import net.minecraft.potion.Potion
+
+object BlocksMC : SpeedMode("BlocksMC") {
+
+    private var wasSlow = false
+
+
+    override fun onDisable() {
+        mc.thePlayer.jumpMovementFactor = 0.02f
+        super.onDisable()
+    }
+
+    override fun onUpdate() {
+
+        if (mc.thePlayer.ticksExisted % 20 <= 9) {
+            mc.timer.timerSpeed = 1.05f
+        } else {
+            mc.timer.timerSpeed = 0.98f
+        }
+
+        if (MovementUtils.isMoving_fdp()) {
+            if (mc.thePlayer.onGround) {
+                mc.timer.timerSpeed = 1.2f
+                wasSlow = false
+                mc.thePlayer.jump()
+                MovementUtils.strafe(MovementUtils.getSpeed_fdp())
+                if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
+                    MovementUtils.strafe(MovementUtils.getSpeed_fdp() * (1.0f + 0.15f * (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).amplifier + 1)))
+                }
+            }
+            MovementUtils.strafe(MovementUtils.getSpeed_fdp() * (1.06f + 0.1f * (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).amplifier + 1)))
+            if (MovementUtils.getSpeed_fdp() < 0.277f + 0.15f * (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).amplifier + 1))
+                wasSlow = true
+            if (wasSlow)
+                MovementUtils.strafe(0.277f + 0.15f * (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).amplifier + 1))
+
+
+        } else {
+            mc.thePlayer.motionX = 0.0
+            mc.thePlayer.motionZ = 0.0
+            wasSlow = true
+        }
+    }
+}

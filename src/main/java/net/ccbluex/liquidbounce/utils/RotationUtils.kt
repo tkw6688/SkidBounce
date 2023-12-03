@@ -19,6 +19,8 @@ import kotlin.math.*
 
 object RotationUtils : MinecraftInstance(), Listenable {
 
+    var targetRotation: Rotation? = null
+
     /**
      * Handle minecraft tick
      *
